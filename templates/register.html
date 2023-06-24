@@ -1,0 +1,34 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block content %}
+<title>Register</title>
+<link rel="stylesheet" href="{% static 'accounts/register-page.css' %}">
+<section class="hero3">
+  <div class="site-description-register">
+    <h2>Register with Grokart</h2>
+    <br>
+    
+  <form class="row contact_form" action="{% url 'accounts:register' %}" method="post" novalidate="novalidate">
+      {% csrf_token %}
+      <div class="col-md-12 form-group p_star">
+          <input type="text" class="form-control" id="username" name="username" value=""
+              placeholder="Username">
+      </div>
+      <div class="col-md-12 form-group p_star">
+          <input type="password" class="form-control" id="password" name="password" value=""
+              placeholder="Password">
+      </div>
+      <div class="col-md-12 form-group p_star">
+          <input type="password" class="form-control" id="password1" name="password1" value=""
+              placeholder="Confirm Password">
+      </div>
+    
+      <button class="btn-register-auth" type="submit"><span>Register</span></button>
+    </form>
+    
+  </div>
+</section>
+
+{% endblock %}

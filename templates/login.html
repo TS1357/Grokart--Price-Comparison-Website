@@ -1,0 +1,39 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content %}
+  <title>Login</title>
+
+
+  <link rel="stylesheet" href="{% static 'accounts/login-page.css' %}">
+
+
+  <section class="hero2">
+
+    <div class="site-description">
+      <h2>Login to your Grokart account</h2>
+      <br>
+      <form class="row contact_form" action="{% url 'accounts:login' %}" method="post" novalidate="novalidate">
+        {% csrf_token %}
+          <div class="col-md-12 form-group p_star">
+              <input type="text" class="form-control" id="username" name="username" value=""
+                  placeholder="Username">
+          </div>
+          <div class="col-md-12 form-group p_star">
+              <input type="password" class="form-control" id="password" name="password" value=""
+                  placeholder="Password">
+          </div>
+        <br>
+        <button class="btn-login-auth" type="submit"><span>Login</span></button>
+      </form>
+    
+    </div>
+  </section>
+
+  {% for message in messages %}
+    <div class="alert alert-warning alert" role="alert">
+      <strong>{{message}}</strong>
+     
+    </div>
+    {% endfor %}
+{% endblock %}
